@@ -1,10 +1,10 @@
-<h1>User</h1>
+<h1>User Information</h1>
 <ul>
-  <li>Name: {{name}}</li>
+  <li>Full Name: {{name}}</li>
   <li>Age: {{age}}</li>
   <li>Email: {{email}}</li>
   <li>Website: {{website}}</li>
-  <li>{{address.street}} {{address.city}} {{address.state}}</li>
+  <li>Address: {{address.street}}, {{address.city}}, {{address.country}}</li>
 </ul>
 
 <h1>Hobbies</h1>
@@ -20,22 +20,23 @@
   </div>
 </form>
 
+
 <h1>Edit User</h1>
 <form>
   <div>
-    <label for="name">Name: </label>
+    <label for="name">Full Name: </label>
     <input type="text" [(ngModel)]="name" name="name">
   </div>
   <div>
     <label for="age">Age: </label>
-    <input type="number" [(ngModel)]="age" name="age">
+    <input type="number" [(ngModel)]="age" name="age"> years
   </div>
   <div>
     <label for="email">Email: </label>
     <input type="email" [(ngModel)]="email" name="email">
   </div>
   <div>
-    <label for="website">website: </label>
+    <label for="website">Website: </label>
     <input type="text" [(ngModel)]="website" name="website">
   </div>
   <div>
@@ -47,8 +48,17 @@
     <input type="text" [(ngModel)]="address.city" name="city">
   </div>
   <div>
-    <label for="state">State: </label>
-    <input type="text" [(ngModel)]="address.state" name="state">
+    <label for="country">Country: </label>
+    <input type="text" [(ngModel)]="address.country" name="country">
   </div><br>
   <button type="reset" value="Reset">Reset</button>
+</form>
+
+<h1>Roman to Arabic</h1>
+<form (submit)="toArabic(roman.value)">
+  <div>
+    <label for="roman">Roman Number: </label>
+    <input type="text" #roman>
+  </div>
+<li>Arabic Number: {{arabic}}</li>
 </form>
