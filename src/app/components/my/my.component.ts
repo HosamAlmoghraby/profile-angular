@@ -12,8 +12,7 @@ export class MyComponent implements OnInit {
   website: string;
   address: Address;
   hobbies: Array<string>;
-  roman: string;
-  arabic: number;
+  romanArabic: string = '';
 
   constructor() {
   }
@@ -29,7 +28,6 @@ export class MyComponent implements OnInit {
       country: 'Austria'
     };
     this.hobbies = ['Coding', 'Swimming', 'Hiking'];
-    this.arabic = 0;
   }
 
   addHobby(hobby) {
@@ -44,34 +42,42 @@ export class MyComponent implements OnInit {
     }
   }
 
-  toArabic(roman): number {
-    let romanArray: Array<string> = roman.split(""),
+  convert(): string | number {
+    if (this.romanArabic.match(/^[0-9]+$/)) {
+      return this.toRoman(parseInt(this.romanArabic));
+    } else {
+      return this.toArabic(this.romanArabic.toUpperCase());
+    }
+  }
+
+  toArabic(value: string): number {
+    let arabic = 0,
+        romanArray: Array<string> = value.split(""),
         numberKeys: object = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000};
         
     for (let i = romanArray.length-1; i >= 0; i--) {  
       if (numberKeys[romanArray[i+1]] <= numberKeys[romanArray[i]] || i == romanArray.length-1)
-        this.arabic += numberKeys[romanArray[i]];
+        arabic += numberKeys[romanArray[i]];
       else
-        this.arabic -= numberKeys[romanArray[i]];
+        arabic -= numberKeys[romanArray[i]];
     }
-    console.log(this.arabic);
-    return this.arabic;
+    return arabic;
   }
 
-  toRoman (arabic): string {
+  toRoman(value: number): string {
     let numberKeys: Array<any> = [['I', 1], ['IV', 4], ['V', 5], ['IX', 9], ['X', 10], ['XL', 40], ['L', 50], ['XC', 90], ['C', 100], ['CD', 400], ['D', 500], ['CM', 900], ['M', 1000]],
-        roman: string = '',
+        roman = '',
         i: number = 12;
 
-    while (this.arabic != 0) {
-      if (this.arabic >= numberKeys[i][1]) {
-        this.arabic -= numberKeys[i][1];
-        this.roman += numberKeys[i][0];
+    while (value != 0) {
+      if (value >= numberKeys[i][1]) {
+        value -= numberKeys[i][1];
+        roman += numberKeys[i][0];
       } else {
         i--;
       }
     }
-    return this.roman;
+    return roman;
   }
 }
 

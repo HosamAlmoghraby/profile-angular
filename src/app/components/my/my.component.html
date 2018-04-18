@@ -54,11 +54,11 @@
   <button type="reset" value="Reset">Reset</button>
 </form>
 
-<h1>Roman to Arabic</h1>
-<form (submit)="toArabic(roman.value)">
+<h1>Roman Numbers Calculator</h1>
+<form>
   <div>
-    <label for="roman">Roman Number: </label>
-    <input type="text" #roman>
+    <label for="roman">Enter roman or arabic number: </label>
+    <input [(ngModel)]="romanArabic" name="roman" autocomplete="off">
+    {{convert()}}
   </div>
-<li>Arabic Number: {{arabic}}</li>
 </form>
