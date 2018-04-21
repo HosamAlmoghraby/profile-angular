@@ -7,7 +7,7 @@
   <li>Address: {{address.street}} {{address.city}}, {{address.country}}</li>
 </ul>
 
-<button (click)="toggleEdit()">Edit</button>
+<button (click)="toggleEdit()">{{editButton}}</button>
 
 <div *ngIf = isEdit>
   <h1>Edit User</h1>
