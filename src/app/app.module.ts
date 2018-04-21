@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MyComponent } from './components/my/my.component';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -12,9 +14,10 @@ import { MyComponent } from './components/my/my.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [DataService],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
