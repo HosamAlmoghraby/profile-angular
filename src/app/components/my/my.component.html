@@ -4,8 +4,45 @@
   <li>Age: {{age}}</li>
   <li>Email: {{email}}</li>
   <li>Website: {{website}}</li>
-  <li>Address: {{address.street}}, {{address.city}}, {{address.country}}</li>
+  <li>Address: {{address.street}} {{address.city}}, {{address.country}}</li>
 </ul>
+
+<button (click)="toggleEdit()">Edit</button>
+
+<div *ngIf = isEdit>
+  <h1>Edit User</h1>
+  <form>
+    <div>
+      <label for="name">Full Name: </label>
+      <input type="text" [(ngModel)]="name" name="name">
+    </div>
+    <div>
+      <label for="age">Age: </label>
+      <input type="number" [(ngModel)]="age" name="age"> years
+    </div>
+    <div>
+      <label for="email">Email: </label>
+      <input type="email" [(ngModel)]="email" name="email">
+    </div>
+    <div>
+      <label for="website">Website: </label>
+      <input type="text" [(ngModel)]="website" name="website">
+    </div>
+    <div>
+      <label for="street">Street: </label>
+      <input type="text" [(ngModel)]="address.street" name="street">
+    </div>
+    <div>
+      <label for="street">City: </label>
+      <input type="text" [(ngModel)]="address.city" name="city">
+    </div>
+    <div>
+      <label for="country">Country: </label>
+      <input type="text" [(ngModel)]="address.country" name="country">
+    </div><br>
+    <button type="reset" value="Reset">Reset</button>
+  </form>
+</div>
 
 <h1>Hobbies</h1>
 <ul>
@@ -18,40 +55,6 @@
     <label for="hobby">New Hobby: </label>
     <input type="text" #hobby>
   </div>
-</form>
-
-
-<h1>Edit User</h1>
-<form>
-  <div>
-    <label for="name">Full Name: </label>
-    <input type="text" [(ngModel)]="name" name="name">
-  </div>
-  <div>
-    <label for="age">Age: </label>
-    <input type="number" [(ngModel)]="age" name="age"> years
-  </div>
-  <div>
-    <label for="email">Email: </label>
-    <input type="email" [(ngModel)]="email" name="email">
-  </div>
-  <div>
-    <label for="website">Website: </label>
-    <input type="text" [(ngModel)]="website" name="website">
-  </div>
-  <div>
-    <label for="street">Street: </label>
-    <input type="text" [(ngModel)]="address.street" name="street">
-  </div>
-  <div>
-    <label for="street">City: </label>
-    <input type="text" [(ngModel)]="address.city" name="city">
-  </div>
-  <div>
-    <label for="country">Country: </label>
-    <input type="text" [(ngModel)]="address.country" name="country">
-  </div><br>
-  <button type="reset" value="Reset">Reset</button>
 </form>
 
 <h1>Roman Numbers Calculator</h1>

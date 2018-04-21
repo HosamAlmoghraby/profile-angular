@@ -15,6 +15,7 @@ export class MyComponent implements OnInit {
   hobbies: Array<string>;
   romanArabic: string = '';
   posts:Array<Post>;
+  isEdit: boolean= false;
 
   constructor(private dataService: DataService) {
     console.log('Data service connected.... (my.component.ts)')
@@ -84,6 +85,10 @@ export class MyComponent implements OnInit {
       }
     }
     return roman;
+  }
+
+  toggleEdit() {
+    this.isEdit = !this.isEdit;
   }
 }
 
