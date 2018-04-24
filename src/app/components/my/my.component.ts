@@ -14,11 +14,11 @@ export class MyComponent implements OnInit {
   address: Address;
   hobbies: Array<string>;
   romanArabic: string = '';
-  posts: Array<Post>;
+  // response: Array<Post>;
   isEdit: boolean = false;
   editButton: string = 'Edit User';
 
-  constructor(private dataService: DataService) {
+  constructor(/*private dataService: DataService*/) {
     console.log('Data service connected.... (my.component.ts)')
   }
 
@@ -33,9 +33,9 @@ export class MyComponent implements OnInit {
       country: 'Austria'
     };
     this.hobbies = ['Coding', 'Swimming', 'Hiking'];
-    this.dataService.getPosts().subscribe((posts) => {
-      this.posts = posts;
-    });
+    // this.dataService.getPosts().subscribe((posts) => {
+    //   this.response = posts;
+    // });
   }
 
   addHobby(hobby) {
@@ -100,9 +100,9 @@ interface Address {
   country: string;
 }
 
-interface Post {
-  id: number,
-  title: string,
-  body: string,
-  userId: number
-}
+// interface Post {
+//   id: number,
+//   title: string,
+//   body: string,
+//   userId: number
+// }

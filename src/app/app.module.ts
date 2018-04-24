@@ -2,29 +2,42 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router';
 
+// Components
 import { AppComponent } from './app.component';
 import { MyComponent } from './components/my/my.component';
-import { DataService } from './services/data.service';
 import { AboutComponent } from './components/about/about.component';
+import { NavigatorComponent } from './components/navigator/navigator.component';
+import { SocialComponent } from './components/social/social.component';
 
-const appRoutes: Routes = [
-  {path:'', component:MyComponent},
-  {path:'about', component:AboutComponent}
-];
+// Services
+import { DataService } from './services/data.service';
+
+// Routes
+import { RoutesModule } from './routes/routes.module';
+
+
+// import { RouterModule, Routes } from '@angular/router';
+
+// const appRoutes: Routes = [
+//   {path:'', component:MyComponent},
+//   {path:'about', component:AboutComponent}
+// ];
 
 @NgModule({
   declarations: [
     AppComponent,
     MyComponent,
-    AboutComponent
+    AboutComponent,
+    NavigatorComponent,
+    SocialComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RoutesModule
+    // RouterModule.forRoot(appRoutes)
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
